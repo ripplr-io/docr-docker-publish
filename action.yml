@@ -1,5 +1,8 @@
 name: docr-docker-publish
 description: Publish a Docker image to Digital Ocean's Container Registry
+branding:
+  icon: 'upload-cloud'  
+  color: 'blue'
 
 inputs:
   image_path:
