@@ -1,4 +1,4 @@
-name: docr-docker-publish
+name: DigitalOcean Docker Image Publish
 description: Publish a Docker image to Digital Ocean's Container Registry
 branding:
   icon: 'upload-cloud'  
