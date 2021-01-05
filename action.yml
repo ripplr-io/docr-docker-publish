@@ -12,6 +12,10 @@ inputs:
     description: Number of characters from the commit SHA
     required: false
     default: '8'
+  dockerfile_path:
+    description: Path for the Dockerfile
+    required: false
+    default: '.'
 
 outputs:
   image_url:
@@ -39,7 +43,7 @@ runs:
 
     - name: Build image
       shell: bash
-      run: docker build . -t ${{ steps.image_tags.outputs.sha }} -t ${{ steps.image_tags.outputs.latest }}
+      run: docker build ${{dockerfile_path}} -t ${{ steps.image_tags.outputs.sha }} -t ${{ steps.image_tags.outputs.latest }}
 
     - name: Login to registry
       shell: bash

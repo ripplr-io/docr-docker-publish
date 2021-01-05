@@ -17,6 +17,7 @@ Add this step to a job to automatically build an image from the Dockerfile and p
 # Inputs
 - `image_path` - (**Required**) Image path in the registry. In the format `registry-name/image-name`.
 - `sha_size` - (Optional) Number of characters from the commit SHA. Default is `'8'`
+- `dockerfile_path` - (Optional) Path for the Dockerfileyou want to build. Default is `'.'`
 
 # Outputs
 The urls of the uploaded images will be accessible with the variables:
