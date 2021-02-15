@@ -47,4 +47,4 @@ runs:
 
     - name: Upload image to registry
       shell: bash
-      run: docker push ${{ steps.image_url.outputs.value }}
+      run: docker push -a ${{ steps.image_url.outputs.value }}
