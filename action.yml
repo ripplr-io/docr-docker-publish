@@ -1,7 +1,7 @@
 name: DigitalOcean Docker Image Publish
 description: Publish a Docker image to Digital Ocean's Container Registry
 branding:
-  icon: 'upload-cloud'  
+  icon: 'upload-cloud'
   color: 'blue'
 
 inputs:
@@ -12,6 +12,14 @@ inputs:
     description: Number of characters from the commit SHA
     required: false
     default: '8'
+  dockerfile:
+    description: The path + name of the Dockerfile you want to build (-f flag)
+    required: false
+    default: 'Dockerfile'
+  docker_build_context:
+    description: The docker build context (usually '.')
+    required: false
+    default: '.'
 
 outputs:
   image_url:
@@ -39,7 +47,11 @@ runs:
 
     - name: Build image
       shell: bash
-      run: docker build . -t ${{ steps.image_tags.outputs.sha }} -t ${{ steps.image_tags.outputs.latest }}
+      run: >
+        docker build ${{ inputs.docker_build_context }}
+        -f ${{ inputs.dockerfile }}
+        -t ${{ steps.image_tags.outputs.sha }}
+        -t ${{ steps.image_tags.outputs.latest }}
 
     - name: Login to registry
       shell: bash
